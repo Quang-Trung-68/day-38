@@ -1,0 +1,110 @@
+/* Thẻ cha chứa giỏ hàng */
+.cart-wrapper {
+  display: flex;
+  justify-content: flex-end; /* đẩy giỏ hàng sang bên phải */
+  align-items: flex-start; /* hoặc center nếu muốn căn giữa chiều dọc */
+  position: relative; /* để dropdown absolute bên trong */
+}
+
+/* Icon giỏ hàng */
+.cart-icon {
+  font-size: 32px;
+  cursor: pointer;
+  position: relative;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.cart-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Badge tổng số lượng */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dropdown giỏ hàng */
+.cart-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; /* xuất hiện ngay dưới icon */
+  right: 0; /* căn về bên phải */
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 12px;
+  z-index: 100;
+}
+
+/* Hiển thị dropdown khi hover container */
+.cart-wrapper:has(.cart-icon:hover) .cart-dropdown,
+.cart-dropdown:hover {
+  display: block;
+}
+
+.cart-dropdown-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-dropdown-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
+.cart-dropdown-item-info {
+  flex: 1;
+}
+
+.cart-dropdown-item-actions button {
+  margin-left: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  gap: 10px;
+}
+
+.product-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
+.product-item button {
+  margin-left: auto;
+  padding: 4px 8px;
+  cursor: pointer;
+}
