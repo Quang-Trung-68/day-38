@@ -13,4 +13,5 @@ export default defineConfig({
       "@pages": "/src/pages",
     },
   },
+  base: "/day-38/",
 });
