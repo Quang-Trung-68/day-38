@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 const CounterA = memo(({ value, increase }) => {
-  console.log("Re-render Counter A");
   return (
     <>
       <h2>Count A is {value}</h2>

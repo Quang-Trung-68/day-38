@@ -9,7 +9,6 @@ const Countdown = () => {
 
   useEffect(() => {
     if (value === 0) return;
-    console.log("Create timer");
     const timer = setInterval(() => {
       setValue((prev) => prev - 1);
     }, 1000);
