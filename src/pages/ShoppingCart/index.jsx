@@ -1,66 +1,15 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import useCart from "@/hooks/useCart";
-import { reducer } from "./reducer";
-import "./CartDropdown.css";
+
+import CartItem from "./CartItem";
+import ProductCart from "./ProductCart";
+
 import { formatPrice } from "@/helpers/formatPrice";
-
-/* -------------------- CartItem -------------------- */
-const CartItem = ({
-  id,
-  title,
-  quantity,
-  price,
-  thumbnail,
-  handleAddToCart,
-  handleAbstractFromCart,
-  handleRemoveFromCart,
-}) => {
-  return (
-    <div className="cart-dropdown-item">
-      <img src={thumbnail} alt={title} />
-      <div className="cart-dropdown-item-info">
-        <div className="cart-dropdown-item-info-title">{title}</div>
-        <div>
-          {quantity} x {formatPrice(price)}
-        </div>
-      </div>
-      <div className="cart-dropdown-item-actions">
-        <button
-          onClick={() => handleAddToCart({ id, title, price, thumbnail })}
-        >
-          +
-        </button>
-        <button
-          onClick={() =>
-            handleAbstractFromCart({ id, title, price, thumbnail })
-          }
-        >
-          -
-        </button>
-        <button onClick={() => handleRemoveFromCart({ id })}>x</button>
-      </div>
-    </div>
-  );
-};
-
-/* -------------------- ProductCart -------------------- */
-const ProductCart = ({ id, title, price, thumbnail, handleAddToCart }) => {
-  return (
-    <div className="product-item">
-      <img src={thumbnail} alt={title} />
-      <div className="product-item-title">{title}</div>
-      <div className="product-item-price">{formatPrice(price)}</div>
-      <button onClick={() => handleAddToCart({ id, title, price, thumbnail })}>
-        Add to Cart
-      </button>
-    </div>
-  );
-};
+import "./CartDropdown.css";
 
 /* -------------------- ShoppingCart -------------------- */
 const ShoppingCart = () => {
-  const cartData = useCart();
-  const [cartState, dispatch] = useReducer(reducer, cartData);
+  const { cartState, dispatch } = useCart();
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
