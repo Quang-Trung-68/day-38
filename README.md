@@ -1,6 +1,4 @@
-# F8 Fullstack Project - Bài tập về nhà Day 33
-
-Dự án học ReactJS và Routing cơ bản.
+# F8 Fullstack Project - Bài tập về nhà Day 38
 
 ## 📦 Cấu trúc dự án
 
@@ -12,17 +10,27 @@ src/
 ├── routes.js # Định nghĩa tuyến đường (Routing)
 └── main.jsx # Điểm khởi đầu của ứng dụng
 ```
+
 ## 🚀 Cách cài đặt & chạy dự án
 
 ```bash
 # Clone repo
-git clone https://github.com/Quang-Trung-68/react-day-33.git
+git clone https://github.com/Quang-Trung-68/day-38.git
 
 # Di chuyển vào thư mục
-cd react-day-33
+cd day-38
 
 # Cài đặt package
 npm install
 
 # Chạy ứng dụng
 npm run dev
+
+```
+
+## 🚀🚀🚀 Deploy Vercel
+
+```bash
+# Clone repo
+https://day-38.vercel.app/
+```
