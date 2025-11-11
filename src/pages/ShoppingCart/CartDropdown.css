@@ -1,14 +1,13 @@
-/* Thẻ cha chứa giỏ hàng */
 .cart-wrapper {
   display: flex;
-  justify-content: flex-end; /* đẩy giỏ hàng sang bên phải */
-  align-items: flex-start; /* hoặc center nếu muốn căn giữa chiều dọc */
-  position: relative; /* để dropdown absolute bên trong */
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: relative;
 }
 
 /* Icon giỏ hàng */
 .cart-icon {
-  font-size: 32px;
+  font-size: 28px;
   cursor: pointer;
   position: relative;
   padding: 12px;
@@ -42,10 +41,11 @@
 .cart-dropdown {
   display: none;
   position: absolute;
-  top: 100%; /* xuất hiện ngay dưới icon */
-  right: 0; /* căn về bên phải */
-  width: 300px;
+  top: 80%;
+  right: 0;
+  width: 400px;
   max-height: 400px;
+  min-height: 200px;
   overflow-y: auto;
   background-color: white;
   border: 1px solid #ccc;
@@ -64,9 +64,15 @@
 .cart-dropdown-item {
   display: flex;
   align-items: center;
+  padding: 6px 8px;
   margin-bottom: 8px;
   padding-bottom: 8px;
   border-bottom: 1px solid #eee;
+  border-radius: 10px;
+}
+
+.cart-dropdown-item:hover {
+  outline: 2px solid blue;
 }
 
 .cart-dropdown-item img {
@@ -80,10 +86,15 @@
   flex: 1;
 }
 
+.cart-dropdown-item-info-title {
+  font-weight: bold;
+}
+
 .cart-dropdown-item-actions button {
   margin-left: 4px;
   padding: 2px 6px;
   cursor: pointer;
+  width: 20px;
 }
 
 .product-item {
@@ -92,8 +103,21 @@
   margin-bottom: 8px;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 6px;
   gap: 10px;
+}
+
+.product-item:hover {
+  outline: 2px solid blue;
+}
+
+.product-item-title {
+  font-weight: bold;
+}
+
+.product-item-price {
+  font-style: italic;
 }
 
 .product-item img {
@@ -105,6 +129,6 @@
 
 .product-item button {
   margin-left: auto;
-  padding: 4px 8px;
+  padding: 6px 10px;
   cursor: pointer;
 }

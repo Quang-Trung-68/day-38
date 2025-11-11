@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import useCart from "@/hooks/useCart";
 import { reducer } from "./reducer";
 import "./CartDropdown.css";
+import { formatPrice } from "@/helpers/formatPrice";
 
 /* -------------------- CartItem -------------------- */
 const CartItem = ({
@@ -18,9 +19,9 @@ const CartItem = ({
     <div className="cart-dropdown-item">
       <img src={thumbnail} alt={title} />
       <div className="cart-dropdown-item-info">
-        <div>{title}</div>
+        <div className="cart-dropdown-item-info-title">{title}</div>
         <div>
-          {quantity} x {price}đ
+          {quantity} x {formatPrice(price)}
         </div>
       </div>
       <div className="cart-dropdown-item-actions">
@@ -36,7 +37,7 @@ const CartItem = ({
         >
           -
         </button>
-        <button onClick={() => handleRemoveFromCart({ id })}>X</button>
+        <button onClick={() => handleRemoveFromCart({ id })}>x</button>
       </div>
     </div>
   );
@@ -47,8 +48,8 @@ const ProductCart = ({ id, title, price, thumbnail, handleAddToCart }) => {
   return (
     <div className="product-item">
       <img src={thumbnail} alt={title} />
-      <div>{title}</div>
-      <div>{price}đ</div>
+      <div className="product-item-title">{title}</div>
+      <div className="product-item-price">{formatPrice(price)}</div>
       <button onClick={() => handleAddToCart({ id, title, price, thumbnail })}>
         Add to Cart
       </button>
@@ -65,7 +66,6 @@ const ShoppingCart = () => {
 
   /* ----- Handlers ----- */
   const handleAddToCart = (item) => {
-    console.log(cartState);
     dispatch({ type: "ADD_TO_CART", payload: item });
   };
 
@@ -111,13 +111,25 @@ const ShoppingCart = () => {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              marginBottom: "8px",
+              alignItems: "center",
+              margin: "10px",
             }}
           >
             <div>
-              <strong>Your Cart</strong>
+              <strong
+                style={{
+                  fontSize: "20px",
+                }}
+              >
+                Your Cart
+              </strong>
             </div>
-            <button onClick={clearCart}>Clear Cart</button>
+            <div style={{ fontWeight: "bold", fontSize: "20px" }}>
+              Total: {formatPrice(cartState.totalPrice)}
+            </div>
+            {cartState.items.length > 0 && (
+              <button onClick={clearCart}>Clear Cart</button>
+            )}
           </div>
           {cartState.items.length > 0 ? (
             cartState.items.map((item) => (
@@ -130,11 +142,16 @@ const ShoppingCart = () => {
               />
             ))
           ) : (
-            <div>Your cart is empty</div>
+            <div
+              style={{
+                marginTop: "50px",
+                fontStyle: "italic",
+                fontSize: "14px",
+              }}
+            >
+              Your cart is empty!
+            </div>
           )}
-          <div style={{ marginTop: "8px", fontWeight: "bold" }}>
-            Total: {cartState.totalPrice}đ
-          </div>
         </div>
       </div>
 
